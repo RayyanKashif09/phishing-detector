@@ -1,0 +1,16 @@
+{
+  "name": "phishguard",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c black,black \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && python3 app.py",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "install:all": "npm install && npm --prefix frontend install && npm run install:backend",
+    "install:backend": "python3 -m pip install --user --break-system-packages torch --index-url https://download.pytorch.org/whl/cpu && python3 -m pip install --user --break-system-packages flask flask-cors transformers peft beautifulsoup4 lxml",
+    "build": "npm --prefix frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
